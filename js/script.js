@@ -17,7 +17,7 @@ function searchForm(array) {
     const input = document.querySelector('input');
     const label = document.querySelector('label');
     const inputText = label.querySelector('input');
-
+    //conditionals for clicks and for searching user names
     if (clicker.type === 'button' || clicker.tagName === 'IMG') {
       let formValue = form.value.toLowerCase();
       let searchArray = [];
@@ -32,7 +32,7 @@ function searchForm(array) {
           inputText.placeholder = 'Search by name...';
         };
       }
-
+      //conditional to add a 'no results found' message using CSS and placeholder text
       if (searchArray.length === 0) {
         input.style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
         input.value = '';
@@ -44,7 +44,7 @@ function searchForm(array) {
   })
 }
 
-
+//ShowPage function will display 9 user profiles
 function showPage(list, page) {
   const startIndex = (page * 9) - 9;
   const endIndex = page * 9;
