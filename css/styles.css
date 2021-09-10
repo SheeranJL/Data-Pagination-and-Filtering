@@ -44,6 +44,13 @@ header h2 {
 }
 
 
+.incorrect {
+	  width: 100%;
+	  border-radius: 4px 0 0 4px;
+	  border: 1px solid red;
+	  padding: 10px 16px;
+	  font-size: 14px;
+}
 
 .student-search {
   display: flex;
@@ -71,6 +78,7 @@ header h2 {
   font-size: 14px;
   background-color: #1e90ff;
   color: #fff;
+	animation: shake 0.5s;
 }
 
 .student-search button img {
@@ -202,13 +210,13 @@ header h2 {
 	.page {
 		width: 70%;
 	}
-	
+
 	header {
 		flex-flow: row;
 		align-items: center;
 		padding: 3em 0;
 	}
-	
+
 	header h2 {
     margin-right: auto;
 		margin-bottom: 0;

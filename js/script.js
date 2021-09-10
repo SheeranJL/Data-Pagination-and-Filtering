@@ -1,14 +1,7 @@
 
-/*
-Create the `showPage` function
-This function will create and insert/append the elements needed to display a "page" of nine students
-*/
 
-
-
-
-
-function searchForm() {
+//Search form function
+function searchForm(array) {
   const header = document.querySelector('.header');
   header.innerHTML = ''
   let formContent = `
@@ -20,39 +13,54 @@ function searchForm() {
     `
   header.insertAdjacentHTML('beforeend', formContent);
   let form = document.getElementById('search');
-
   //event listener for click
   header.addEventListener('click', (e) => {
     let clicker = e.target;
-    if (clicker.type === 'button' || clicker.tagName === 'IMG') {
-      formValue = form.value;
-      console.log(formValue);
-    }
+    const input = document.querySelector('input');
+    const label = document.querySelector('label');
+    const inputText = label.querySelector('input');
 
+    if (clicker.type === 'button' || clicker.tagName === 'IMG') {
+      let formValue = form.value.toLowerCase();
+      let searchArray = [];
+      for (let i = 0; i < array.length; i++) {
+        if (data[i].email.includes(formValue)) {
+          input.style.backgroundColor = '';
+          searchArray.push(data[i]);
+          console.log(searchArray);
+          addPadination(searchArray);
+          showPage(searchArray, 1);
+        };
+      }
+
+      if (searchArray.length === 0) {
+        input.style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
+        input.value = '';
+        inputText.placeholder = 'No results found...';
+      }
+    }
   })
 }
 
 
-
-
 function showPage(list, page) {
-  const startIndex = (page * 10) - 10;
-  const endIndex = page * 10;
+  const startIndex = (page * 9) - 9;
+  const endIndex = page * 9;
   const studentList = document.querySelector('.student-list');
   studentList.innerHTML = '';
   // loop over the length of the `list` parameter
   for (let i = 0; i < list.length; i++) {
-    if (i > startIndex && i < endIndex) {
+    if (i >= startIndex && i < endIndex) {
       //template literal containing html and data extracted from data array
       let studentItem = `
         <li class="student-item cf">
           <div class="student-details">
-            <img class="avatar" src=${data[i].picture.large} alt="Profile Picture">
-            <h3>${data[i].name.first} ${data[i].name.last}</h3>
-            <span class="email">${data[i].email}</span>
+            <img class="avatar" src=${list[i].picture.large} alt="Profile Picture">
+            <h3>${list[i].name.first} ${list[i].name.last}</h3>
+            <span class="email">${list[i].email}</span>
           </div>
           <div class="joined-details">
-            <span class="date">${data[i].registered.date}</span>
+            <span class="date">${list[i].registered.date}</span>
           </div>
         </li>
       `
@@ -79,7 +87,7 @@ function addPadination(list) {
   }
   document.querySelector('button').className = 'active';
 
-
+//Event listener for page numbers
   linkList.addEventListener('click', (e) => {
     target = e.target;
     if (target.type === 'button') {
@@ -90,7 +98,8 @@ function addPadination(list) {
   });
 }
 
+
+// Call functions
 addPadination(data);
 showPage(data, 1);
-searchForm();
-// Call functions
+searchForm(data);
