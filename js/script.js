@@ -30,6 +30,7 @@ function searchForm(array) {
           console.log(searchArray);
           addPadination(searchArray);
           showPage(searchArray, 1);
+          input.value = '';
         };
       }
 
@@ -37,6 +38,8 @@ function searchForm(array) {
         input.style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
         input.value = '';
         inputText.placeholder = 'No results found...';
+        showPage(searchArray, 1);
+        addPadination(searchArray);
       }
     }
   })
