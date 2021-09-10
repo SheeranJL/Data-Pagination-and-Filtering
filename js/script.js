@@ -1,5 +1,3 @@
-
-
 //Search form function
 function searchForm(array) {
   const header = document.querySelector('.header');
@@ -31,6 +29,7 @@ function searchForm(array) {
           addPadination(searchArray);
           showPage(searchArray, 1);
           input.value = '';
+          inputText.placeholder = 'Search by name...';
         };
       }
 
