@@ -78,7 +78,6 @@ header h2 {
   font-size: 14px;
   background-color: #1e90ff;
   color: #fff;
-	animation: shake 0.5s;
 }
 
 .student-search button img {
@@ -104,6 +103,12 @@ header h2 {
   -webkit-transition: box-shadow .3s ease;
   transition: box-shadow .3s ease;
 }
+
+.student-item:hover {
+	background-color: rgba(54, 226, 192, 0.2);
+	transition: 1s;
+}
+
 
 .avatar {
   margin: 0 auto;

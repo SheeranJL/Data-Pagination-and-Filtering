@@ -25,7 +25,6 @@ function searchForm(array) {
         if (data[i].email.includes(formValue)) {
           input.style.backgroundColor = '';
           searchArray.push(data[i]);
-          console.log(searchArray);
           addPadination(searchArray);
           showPage(searchArray, 1);
           input.value = '';
